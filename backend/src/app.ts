@@ -1,0 +1,39 @@
+import express from 'express';
+import cors from 'cors';
+import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
+
+const app = express();
+
+app.use(express.json());
+app.use(cors());
+
+const swaggerOptions: swaggerJsdoc.Options = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'API Documentation',
+      version: '1.0.0',
+      description: 'API para gerenciar países visitados e que se deseja visitar',
+    },
+  },
+  apis: ['./src/routes/*.ts'],
+};
+
+const swaggerSpecs = swaggerJsdoc(swaggerOptions);
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
+
+app.use('/api/countries', countryRoutes);
+
+app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
+  console.error(err.stack);
+  res.status(500).send({ error: err.message });
+});
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+  console.log(`API documentation available at http://localhost:${PORT}/api-docs`);
+});
