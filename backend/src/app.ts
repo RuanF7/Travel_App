@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+import countryRoutes from './routes/countries';
 
 const app = express();
 
