@@ -30,6 +30,11 @@ function App() {
   };
 
   const handleAddToVisited = async (country: Country) => {
+
+    if (isInList('wishlist', country.country_code)) {
+      showNotification(`${country.name} já está na lista de desejos. Remova de lá primeiro.`, 'error');
+      return;
+    }
     const result = await addToVisited(country);
     if (result.success) {
       showNotification(`${country.name} adicionado aos países visitados!`, 'success');
@@ -39,6 +44,12 @@ function App() {
   };
 
   const handleAddToWishlist = async (country: Country) => {
+    
+    if (isInList('visited', country.country_code)) {
+      showNotification(`${country.name} já está na lista de visitados. Remova de lá primeiro.`, 'error');
+      return;
+    }
+
     const result = await addToWishlist(country);
     if (result.success) {
       showNotification(`${country.name} adicionado à lista de desejos!`, 'success');

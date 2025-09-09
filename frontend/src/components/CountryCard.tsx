@@ -46,14 +46,14 @@ const CountryCard: React.FC<CountryCardProps> = ({
           disabled={isInList('visited', country.country_code)}
           className="px-3 py-1 bg-green-500 text-white rounded text-sm hover:bg-green-600 disabled:opacity-50"
         >
-          {isInList('visited', country.country_code) ? 'Already Visited' : 'Mark as Visited'}
+          {isInList('visited', country.country_code) ? 'Ja Visitei' : 'Marcar como Visitado'}
         </button>
         <button
           onClick={() => onAddToWishlist(country)}
           disabled={isInList('wishlist', country.country_code)}
           className="px-3 py-1 bg-yellow-500 text-white rounded text-sm hover:bg-yellow-600 disabled:opacity-50"
         >
-          {isInList('wishlist', country.country_code) ? 'In Wishlist' : 'Add to Wishlist'}
+          {isInList('wishlist', country.country_code) ? 'Na Lista de Desejos' : 'Adicionar à Lista de Desejos'}
         </button>
       </div>
     </div>
