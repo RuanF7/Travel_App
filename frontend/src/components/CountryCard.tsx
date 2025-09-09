@@ -15,28 +15,28 @@ const CountryCard: React.FC<CountryCardProps> = ({
   isInList
 }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 mb-4">
+    <div className="country-card bg-primary-darkgray rounded-lg shadow-lg p-4 mb-4 border-l-4 border-transparent">
       <div className="flex items-center mb-3">
         <img 
           src={country.flag} 
           alt={`Flag of ${country.name}`} 
-          className="w-12 h-8 object-cover mr-3"
+          className="w-12 h-8 object-cover mr-3 shadow-md"
         />
-        <h3 className="text-xl font-semibold">{country.name}</h3>
+        <h3 className="text-xl font-semibold text-primary-white">{country.name}</h3>
       </div>
       
-      <div className="grid grid-cols-2 gap-2 mb-4 text-sm">
+      <div className="grid grid-cols-2 gap-2 mb-4 text-sm text-primary-lightgray">
         <div>
-          <span className="font-medium">Capital:</span> {country.capital || 'N/A'}
+          <span className="font-medium text-primary-orange">Capital:</span> {country.capital || 'N/A'}
         </div>
         <div>
-          <span className="font-medium">Region:</span> {country.region}
+          <span className="font-medium text-primary-orange">Region:</span> {country.region}
         </div>
         <div>
-          <span className="font-medium">Population:</span> {country.population?.toLocaleString()}
+          <span className="font-medium text-primary-orange">Population:</span> {country.population?.toLocaleString()}
         </div>
         <div>
-          <span className="font-medium">Code:</span> {country.country_code}
+          <span className="font-medium text-primary-orange">Code:</span> {country.country_code}
         </div>
       </div>
       
@@ -44,14 +44,14 @@ const CountryCard: React.FC<CountryCardProps> = ({
         <button
           onClick={() => onAddToVisited(country)}
           disabled={isInList('visited', country.country_code)}
-          className="px-3 py-1 bg-green-500 text-white rounded text-sm hover:bg-green-600 disabled:opacity-50"
+          className="px-3 py-2 bg-primary-orange text-primary-white rounded text-sm hover:bg-orange-600 disabled:opacity-50 transition-colors font-medium"
         >
-          {isInList('visited', country.country_code) ? 'Ja Visitei' : 'Marcar como Visitado'}
+          {isInList('visited', country.country_code) ? 'Já Visitei' : 'Marcar como Visitado'}
         </button>
         <button
           onClick={() => onAddToWishlist(country)}
           disabled={isInList('wishlist', country.country_code)}
-          className="px-3 py-1 bg-yellow-500 text-white rounded text-sm hover:bg-yellow-600 disabled:opacity-50"
+          className="px-3 py-2 bg-transparent border border-primary-orange text-primary-orange rounded text-sm hover:bg-primary-orange hover:text-primary-white disabled:opacity-50 transition-colors font-medium"
         >
           {isInList('wishlist', country.country_code) ? 'Na Lista de Desejos' : 'Adicionar à Lista de Desejos'}
         </button>

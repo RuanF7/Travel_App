@@ -15,10 +15,7 @@ const WorldMap: React.FC<WorldMapProps> = ({ visitedCountries, wishlistCountries
 
   return (
     <div className="bg-white p-4 rounded-lg shadow-md">
-      <WorldSVG
-        className="w-full h-auto"
-        style={{ maxHeight: '600px' }}
-      />
+      <WorldSVG className="w-full h-auto" style={{ maxHeight: '600px' }} />
       <style>
         {`
           path {
@@ -28,6 +25,7 @@ const WorldMap: React.FC<WorldMapProps> = ({ visitedCountries, wishlistCountries
           ${wishlistCountries.map(code => `#${code} { fill: #FF9800 !important; }`).join('\n')}
         `}
       </style>
+
     </div>
   );
 };

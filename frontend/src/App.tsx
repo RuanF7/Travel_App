@@ -30,7 +30,6 @@ function App() {
   };
 
   const handleAddToVisited = async (country: Country) => {
-
     if (isInList('wishlist', country.country_code)) {
       showNotification(`${country.name} já está na lista de desejos. Remova de lá primeiro.`, 'error');
       return;
@@ -44,7 +43,6 @@ function App() {
   };
 
   const handleAddToWishlist = async (country: Country) => {
-    
     if (isInList('visited', country.country_code)) {
       showNotification(`${country.name} já está na lista de visitados. Remova de lá primeiro.`, 'error');
       return;
@@ -84,19 +82,23 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8">
+    <div className="min-h-screen bg-primary-black py-8 font-sans">
       <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-bold text-center mb-8">🌍 Gerenciador de Países</h1>
-
-        <div className="flex mb-6 border-b border-gray-200">
+        <h1 className="text-4xl md:text-5xl font-bold text-center mb-10 text-primary-white">
+          <span className="text-primary-white">🌍</span> 
+          <span className="bg-gradient-to-r from-primary-orange to-yellow-500 bg-clip-text text-transparent ml-2">
+            Gerenciador de Países
+          </span>
+        </h1>
+        <div className="flex mb-6 border-b border-primary-darkgray">
           <button
-            className={`py-2 px-4 font-medium text-sm ${activeTab === 'countries' ? 'border-b-2 border-blue-500 text-blue-600' : 'text-gray-500'}`}
+            className={`py-2 px-4 font-medium text-sm ${activeTab === 'countries' ? 'tab-active text-primary-orange' : 'text-primary-lightgray'}`}
             onClick={() => setActiveTab('countries')}
           >
             Lista de Países
           </button>
           <button
-            className={`py-2 px-4 font-medium text-sm ${activeTab === 'map' ? 'border-b-2 border-blue-500 text-blue-600' : 'text-gray-500'}`}
+            className={`py-2 px-4 font-medium text-sm ${activeTab === 'map' ? 'tab-active text-primary-orange' : 'text-primary-lightgray'}`}
             onClick={() => setActiveTab('map')}
           >
             Mapa Mundial
@@ -104,7 +106,7 @@ function App() {
         </div>
 
         {notification.message && (
-          <div className={`fixed top-4 right-4 px-4 py-2 rounded-md shadow-md ${notification.type === 'error' ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
+          <div className={`fixed top-4 right-4 px-4 py-2 rounded-md shadow-md z-50 ${notification.type === 'error' ? 'bg-red-800 text-primary-white' : 'bg-primary-orange text-primary-white'}`}>
             {notification.message}
           </div>
         )}
@@ -114,14 +116,14 @@ function App() {
             <SearchBar onSearch={handleSearch} loading={loading} />
 
             {error && (
-              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+              <div className="bg-red-800 border border-red-600 text-primary-white px-4 py-3 rounded mb-6">
                 {error}
               </div>
             )}
 
             {searchResults.length > 0 && (
-              <div className="bg-white rounded-lg shadow-md p-4 mb-6">
-                <h2 className="text-xl font-semibold mb-3">Resultados da Busca</h2>
+              <div className="bg-gradient-to-br from-primary-darkgray to-black rounded-lg shadow-lg p-4 mb-6">
+                <h2 className="text-xl font-semibold mb-3 text-primary-white">Resultados da Busca</h2>
                 <div className="grid grid-cols-1 gap-4">
                   {searchResults.map(country => (
                     <CountryCard
