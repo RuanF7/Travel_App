@@ -42,13 +42,13 @@ cd frontend
 Instale as dependências:
 
 ```bash
-npm install
+yarn install
 ```
 
 Crie o arquivo .env com as variáveis necessárias:
 
 ```bash
-VITE_API_URL=http://localhost:8000/api
+REACT_APP_API_BASE_URLL=http://localhost:8000/api
 ```
 
 Rode a aplicação:
