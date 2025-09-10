@@ -10,6 +10,33 @@ O projeto permite buscar países, marcar como visitados, adicionar à lista de d
 
 ---
 
+### ⚙️ Configurar a versão do Node
+
+O projeto utiliza uma versão específica do Node definida no arquivo `.nvmrc`.  
+Se você estiver usando NVM, execute:
+
+### ⚡ Rodando Backend e Frontend
+
+O projeto é dividido em **backend** e **frontend**, que devem ser executados separadamente:
+
+1. **Backend**
+2. 
+```bash
+cd backend
+nvm install
+nvm use
+yarn install
+yarn run dev
+```
+
+1. **Frontend**
+```bash
+cd frontend
+nvm install
+nvm use
+yarn install
+yarn start
+```
 ## 🔹 Funcionalidades
 
 - Busca de países por nome
