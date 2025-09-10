@@ -11,8 +11,10 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@types/dotenv": "^8.2.3",
     "axios": "^1.11.0",
     "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "sqlite3": "^5.1.7",
     "swagger-jsdoc": "^6.2.8",
@@ -31,7 +33,7 @@
   },
   "author": "Ruan Finamor",
   "engines": {
-  "node": "20.15.0",
-  "yarn": ">=1.22.0"
-}
+    "node": "20.15.0",
+    "yarn": ">=1.22.0"
+  }
 }
