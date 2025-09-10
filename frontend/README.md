@@ -1,46 +1,97 @@
-# Getting Started with Create React App
+🌐 Travel_App - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+O frontend do Travel_App é construído em React com TypeScript e Tailwind CSS. Ele se conecta à API do backend para gerenciar países visitados, lista de desejos, mapa e estatísticas.
 
-### `npm test`
+📂 Estrutura do Frontend
+frontend/
+├─ src/
+│  ├─ components/
+│  ├─ hooks/
+│  ├─ services/
+│  ├─ App.tsx
+│  ├─ index.tsx
+├─ .env             # Variáveis de ambiente
+├─ package.json
+├─ tsconfig.json
+└─ README.md
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+⚙️ Funcionalidades
 
-### `npm run build`
+Busca de países com sugestões automáticas
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Adicionar/remover países visitados
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Adicionar/remover países na lista de desejos
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Visualização de mapa mundial interativo
 
-### `npm run eject`
+Estatísticas de países visitados e desejados
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Notificações para ações realizadas
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Persistência via API do backend
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+📦 Instalação
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Entre na pasta do frontend:
 
-## Learn More
+cd frontend
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Instale as dependências:
+
+npm install
+
+
+Crie o arquivo .env com as variáveis necessárias:
+
+VITE_API_URL=http://localhost:8000/api
+
+
+Rode a aplicação:
+
+npm run dev
+
+
+O frontend estará disponível em http://localhost:5173 (ou porta configurada pelo Vite).
+
+🛠️ Estrutura de Componentes
+
+CountryCard → Exibe informações do país e botões de ação
+
+CountryList → Lista países visitados ou da lista de desejos
+
+SearchBar → Busca países e mostra sugestões
+
+WorldMap → Mapa mundial com cores para visitados e desejos
+
+MapStats → Estatísticas de países visitados/desejados
+
+Hooks → useCountries, useDebounce, useWorldMap para gerenciamento de estado e lógica
+
+🔗 Integração com Backend
+
+O frontend consome as rotas do backend via Axios.
+
+Todas as ações (adicionar, remover, buscar) passam pelos endpoints do backend.
+
+É necessário que o backend esteja rodando para o frontend funcionar corretamente.
+
+💡 Observações
+
+O frontend utiliza Tailwind CSS para estilização e responsividade.
+
+Todas as interações atualizam a interface em tempo real.
+
+Notificações informam sobre sucesso ou falha das ações.
+
+O mapa mundial utiliza IDs de países para colorir visitados e desejos.
+
+📄 Licença
+
+MIT License
