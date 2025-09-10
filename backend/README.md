@@ -57,7 +57,7 @@ yarn run dev
 
 O servidor estará disponível em http://localhost:8000.
 
-##🗄️ Banco de Dados
+## 🗄️ Banco de Dados
 
 Utiliza SQLite.
 
@@ -89,7 +89,7 @@ CREATE TABLE wishlist_countries (
 );
 ```
 
-##🔗 Rotas da API
+## 🔗 Rotas da API
 
 Países Visitados
 
