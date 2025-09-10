@@ -26,9 +26,9 @@ O projeto permite buscar países, marcar como visitados, adicionar à lista de d
 ## 📁 Estrutura do Projeto
 
 Travel_App/
-├─ backend/│ 
+├─ backend/ 
 ├─ frontend/
-├─ .gitignore
+├─.gitignore
 ├─ README.md
 
 
@@ -48,17 +48,19 @@ git clone https://github.com/RuanF7/Travel_App.git
 cd Travel_App
 ```
 
-2. Configurar backend e frontend
+### 2. Configurar backend e frontend
 Entre nas pastas backend e frontend separadamente e siga as instruções dos READMEs específicos.
 
 É essencial configurar os arquivos .env em ambos os projetos para que tudo funcione corretamente.
 
-📚 Leitura Recomendada
-README do Backend: Contém instruções detalhadas de instalação, configuração, banco de dados, rotas da API, variáveis de ambiente e como rodar o servidor.
+📚 Leitura Recomendada  
+
+README do Backend: Contém instruções detalhadas de instalação, configuração, banco de dados, rotas da API, variáveis de ambiente e como rodar o servidor.  
 
 README do Frontend: Contém instruções detalhadas de instalação, configuração, variáveis de ambiente, execução da aplicação e uso dos componentes principais.
 
-💡 Observações
+💡 Observações  
+
 O projeto utiliza SQLite para persistência local, então é necessário garantir que o banco de dados seja criado corretamente (o backend cria automaticamente se não existir).
 
 Todas as interações de adicionar/remover países são refletidas no mapa mundial e nas estatísticas em tempo real.
