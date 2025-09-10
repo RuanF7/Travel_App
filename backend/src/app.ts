@@ -3,6 +3,7 @@ import cors from 'cors';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import countryRoutes from './routes/countries';
+import { errorHandler } from './utils/errorHandler';
 
 const app = express();
 
@@ -27,10 +28,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 
 app.use('/api/countries', countryRoutes);
 
-app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
-  console.error(err.stack);
-  res.status(500).send({ error: err.message });
-});
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 8000;
 
