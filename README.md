@@ -46,6 +46,7 @@ Travel_App/
 ```bash
 git clone https://github.com/RuanF7/Travel_App.git
 cd Travel_App
+```
 
 2. Configurar backend e frontend
 Entre nas pastas backend e frontend separadamente e siga as instruções dos READMEs específicos.
