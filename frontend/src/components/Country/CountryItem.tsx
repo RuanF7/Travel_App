@@ -1,13 +1,30 @@
 import React from 'react';
-import { Country } from '../../services/api';
 
 interface CountryItemProps {
-  country: Country;
+  country: {
+    country_code: string;
+    name: string;
+    flag: string;
+    created_at?: string | null;
+  };
   onRemove: (countryCode: string) => void;
   title: string;
 }
 
 const CountryItem: React.FC<CountryItemProps> = ({ country, onRemove, title }) => {
+
+  const formatDate = (dateString?: string | null) => {
+    if (!dateString) return 'Data desconhecida';    
+   
+    const isoString = dateString.replace(' ', 'T');
+
+    const date = new Date(isoString);
+   
+    if (isNaN(date.getTime())) return 'Data desconhecida';
+
+    return date.toLocaleDateString('pt-BR');
+  };
+
   return (
     <div className="bg-black rounded-lg p-3 relative border border-primary-darkgray transition-all hover:border-primary-orange hover:shadow-md">
       <div className="flex items-center mb-2">
@@ -34,7 +51,7 @@ const CountryItem: React.FC<CountryItemProps> = ({ country, onRemove, title }) =
       </button>
       
       <div className="text-xs text-primary-lightgray">
-        Adicionado: {country.created_at ? new Date(country.created_at).toLocaleDateString('pt-BR') : 'Data desconhecida'}
+        Adicionado: {formatDate(country.created_at)}
       </div>
     </div>
   );
