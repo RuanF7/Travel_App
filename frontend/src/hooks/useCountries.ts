@@ -18,18 +18,14 @@ export const useCountries = () => {
   const [error, setError] = useState<string | null>(null);
 
   const handleSearch = async (name: string) => {
-    if (!name) {
-      setSearchResults([]);
-      return;
-    }
-
+    if (!name.trim()) return setSearchResults([]);
     setLoading(true);
     setError(null);
     try {
-      const response = await apiSearchCountries(name);
-      setSearchResults(response.data);
+      const { data } = await apiSearchCountries(name);
+      setSearchResults(data);
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Error searching countries');
+      setError(err.response?.data?.message || 'Erro ao buscar países');
       setSearchResults([]);
     } finally {
       setLoading(false);
@@ -38,70 +34,54 @@ export const useCountries = () => {
 
   const loadSavedCountries = async () => {
     try {
-      const [visitedResponse, wishlistResponse] = await Promise.all([
+      const [{ data: visited }, { data: wishlist }] = await Promise.all([
         apiGetVisitedCountries(),
         apiGetWishlistCountries(),
       ]);
-      setVisitedCountries(visitedResponse.data);
-      setWishlistCountries(wishlistResponse.data);
-    } catch (err: any) {
-      setError('Error loading saved countries');
+      setVisitedCountries(visited);
+      setWishlistCountries(wishlist);
+    } catch {
+      setError('Erro ao carregar países salvos');
     }
   };
-
+  
   const addToVisited = async (country: Country) => {
     try {
       await apiAddToVisited(country);
-      await loadSavedCountries();
+      setVisitedCountries(prev => [...prev, country]);
       return { success: true };
     } catch (err: any) {
-      return { 
-        success: false, 
-        message: err.response?.data?.message || 'Error adding to visited' 
-      };
+      return { success: false, message: err.response?.data?.message || 'Erro ao adicionar' };
     }
   };
 
   const addToWishlist = async (country: Country) => {
     try {
       await apiAddToWishlist(country);
-      await loadSavedCountries();
+      setWishlistCountries(prev => [...prev, country]);
       return { success: true };
     } catch (err: any) {
-      return { 
-        success: false, 
-        message: err.response?.data?.message || 'Error adding to wishlist' 
-      };
+      return { success: false, message: err.response?.data?.message || 'Erro ao adicionar' };
     }
   };
 
   const removeFromVisited = async (countryCode: string) => {
     try {
       await apiRemoveFromVisited(countryCode);
-      setVisitedCountries(prev => 
-        prev.filter(country => country.country_code !== countryCode)
-      );
+      setVisitedCountries(prev => prev.filter(c => c.country_code !== countryCode));
       return { success: true };
     } catch (err: any) {
-      return { 
-        success: false, 
-        message: err.response?.data?.message || 'Error removing from visited' 
-      };
+      return { success: false, message: err.response?.data?.message || 'Erro ao remover' };
     }
   };
 
   const removeFromWishlist = async (countryCode: string) => {
     try {
       await apiRemoveFromWishlist(countryCode);
-      setWishlistCountries(prev => 
-        prev.filter(country => country.country_code !== countryCode)
-      );
+      setWishlistCountries(prev => prev.filter(c => c.country_code !== countryCode));
       return { success: true };
     } catch (err: any) {
-      return { 
-        success: false, 
-        message: err.response?.data?.message || 'Error removing from wishlist' 
-      };
+      return { success: false, message: err.response?.data?.message || 'Erro ao remover' };
     }
   };
 

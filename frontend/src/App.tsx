@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useCountries } from './hooks/useCountries';
-import SearchBar from './components/SearchBar';
-import CountryCard from './components/CountryCard';
-import CountryList from './components/CountryList';
+import SearchBar from './components/Search/SearchBar';
+import CountryCard from './components/Country/CountryCard';
+import CountryList from './components/Country/CountryList';
 import WorldMap from './components/WorldMap';
-import MapStats from './components/MapStats';
+import MapStats from './components/Map/MapStats';
 import { Country } from './services/api';
 
 function App() {
