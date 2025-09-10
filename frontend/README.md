@@ -1,13 +1,8 @@
-🌐 Travel_App - Frontend
+# 🌍 Travel_App - Frontend
 
+**O frontend do Travel_App** é construído em React com TypeScript e Tailwind CSS. Ele se conecta à API do backend para gerenciar países visitados, lista de desejos, mapa e estatísticas.
 
-
-
-
-
-O frontend do Travel_App é construído em React com TypeScript e Tailwind CSS. Ele se conecta à API do backend para gerenciar países visitados, lista de desejos, mapa e estatísticas.
-
-📂 Estrutura do Frontend
+## 📂 Estrutura do Frontend
 frontend/
 ├─ src/
 │  ├─ components/
@@ -20,7 +15,7 @@ frontend/
 ├─ tsconfig.json
 └─ README.md
 
-⚙️ Funcionalidades
+## ⚙️ Funcionalidades
 
 Busca de países com sugestões automáticas
 
@@ -36,45 +31,49 @@ Notificações para ações realizadas
 
 Persistência via API do backend
 
-📦 Instalação
+## 📦 Instalação
 
 Entre na pasta do frontend:
 
+```bash
 cd frontend
-
+```
 
 Instale as dependências:
 
+```bash
 npm install
-
+```
 
 Crie o arquivo .env com as variáveis necessárias:
 
+```bash
 VITE_API_URL=http://localhost:8000/api
-
+```
 
 Rode a aplicação:
 
-npm run dev
+```bash
+yarn start
+```
 
+O frontend estará disponível em http://localhost:3000.
 
-O frontend estará disponível em http://localhost:5173 (ou porta configurada pelo Vite).
+## 🛠️ Estrutura de Componentes
 
-🛠️ Estrutura de Componentes
+#### CountryCard → Exibe informações do país e botões de ação
 
-CountryCard → Exibe informações do país e botões de ação
+#### CountryList → Lista países visitados ou da lista de desejos
 
-CountryList → Lista países visitados ou da lista de desejos
+#### SearchBar → Busca países e mostra sugestões
 
-SearchBar → Busca países e mostra sugestões
+#### WorldMap → Mapa mundial com cores para visitados e desejos
 
-WorldMap → Mapa mundial com cores para visitados e desejos
+#### MapStats → Estatísticas de países visitados/desejados
 
-MapStats → Estatísticas de países visitados/desejados
+#### Hooks → useCountries, useDebounce, useWorldMap para gerenciamento de estado e lógica
 
-Hooks → useCountries, useDebounce, useWorldMap para gerenciamento de estado e lógica
-
-🔗 Integração com Backend
+## 🔗 Integração com Backend
 
 O frontend consome as rotas do backend via Axios.
 
